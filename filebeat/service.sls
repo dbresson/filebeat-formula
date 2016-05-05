@@ -13,10 +13,11 @@ filebeat.pubkeytoauth:
     - require:
       - cmd: filebeat.sshkeygen
 
-filebeat:
-   service.running:
-    - enable: True
-    - require:
-      - pkg: filebeat
-      - cmd: filebeat.sshkeygen
-      - cmd: filebeat.pubkeytoauth
+filebeat.service:
+  filebeat:
+     service.running:
+      - enable: True
+      - require:
+        - pkg: filebeat
+        - cmd: filebeat.sshkeygen
+        - cmd: filebeat.pubkeytoauth
