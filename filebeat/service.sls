@@ -14,8 +14,8 @@ filebeat.pubkeytoauth:
       - cmd: filebeat.sshkeygen
 
 filebeat.service:
-  cmd.run:
-    - name: ssh -t -t -o NoHostAuthenticationForLocalhost=yes -i /root/.ssh/filebeat root@localhost "su -c 'service filebeat restart'"
+   service.running:
+    - enable: True
     - require:
       - pkg: filebeat
       - cmd: filebeat.sshkeygen
